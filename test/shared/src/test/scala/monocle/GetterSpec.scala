@@ -38,7 +38,7 @@ class GetterSpec extends MonocleSuite {
   test("Getter has a Zip instance") {
     val length = Getter[String, Int](_.length)
     val upper = Getter[String, String](_.toUpperCase)
-    Zip[Getter[String, ?]].product(length, upper).get("helloworld") shouldEqual((10, "HELLOWORLD"))
+    Zip[Getter[String, *]].product(length, upper).get("helloworld") shouldEqual((10, "HELLOWORLD"))
   }
 
   test("get") {

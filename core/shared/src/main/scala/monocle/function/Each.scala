@@ -55,7 +55,7 @@ object Each extends EachFunctions {
 
   implicit def listEach[A]: Each[List[A], A] = fromTraverse
 
-  implicit def mapEach[K: Order, V]: Each[SortedMap[K, V], V] = fromTraverse[SortedMap[K, ?], V]
+  implicit def mapEach[K: Order, V]: Each[SortedMap[K, V], V] = fromTraverse[SortedMap[K, *], V]
 
   implicit def optEach[A]: Each[Option[A], A] = new Each[Option[A], A] {
     def each = monocle.std.option.some[A].asTraversal
@@ -103,7 +103,7 @@ object Each extends EachFunctions {
   import cats.data.{Chain, NonEmptyChain, NonEmptyList, NonEmptyVector, OneAnd, Validated => Validation}
   import cats.free.Cofree
 
-  implicit def cofreeEach[S[_]: Traverse, A]: Each[Cofree[S, A], A] = fromTraverse[Cofree[S, ?], A]
+  implicit def cofreeEach[S[_]: Traverse, A]: Each[Cofree[S, A], A] = fromTraverse[Cofree[S, *], A]
 
   implicit def chainEach[A]: Each[Chain[A], A] = fromTraverse
 

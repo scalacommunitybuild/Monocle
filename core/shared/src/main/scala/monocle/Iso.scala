@@ -272,7 +272,7 @@ abstract class PIso[S, T, A, B] extends Serializable { self =>
   /*************************************************************************/
 
   def apply()(implicit ev: B === Unit): T =
-    ev.substitute[PIso[S, T, A, ?]](self).reverseGet(())
+    ev.substitute[PIso[S, T, A, *]](self).reverseGet(())
 
   def apply(b: B): T = reverseGet(b)
 

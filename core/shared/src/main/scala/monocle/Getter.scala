@@ -146,7 +146,7 @@ sealed abstract class GetterInstances extends GetterInstances0 {
       g composeGetter f
   }
 
-  implicit def getterZip[S]: Zip[Getter[S, ?]] = new Zip[Getter[S, ?]] {
+  implicit def getterZip[S]: Zip[Getter[S, *]] = new Zip[Getter[S, *]] {
     override def product[A, B](a: Getter[S, A], b: Getter[S, B]) = a zip b
   }
 }

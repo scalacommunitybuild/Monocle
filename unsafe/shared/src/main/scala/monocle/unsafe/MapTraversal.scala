@@ -14,7 +14,7 @@ import scala.collection.immutable.Map
 
 object MapTraversal {
 
-  implicit def mapEach[K, V]: Each[Map[K, V], V] = fromTraverse[Map[K, ?], V]
+  implicit def mapEach[K, V]: Each[Map[K, V], V] = fromTraverse[Map[K, *], V]
 
   implicit def mapMapFilterIndex[K, V]: FilterIndex[Map[K,V], K, V] = new FilterIndex[Map[K, V], K, V] {
     def filterIndex(predicate: K => Boolean) = new Traversal[Map[K, V], V] {
